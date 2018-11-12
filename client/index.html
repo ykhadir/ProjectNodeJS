@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Todo liste avec VueJS</title>
+
+    <script src="lib/vue.min.js"></script>
+    <script src="js/script.js"></script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <marquee><h1>Project / Node.js</h1></marquee></br></br>
+    <div id="app">
+        <br>
+        
+                <div id="td1">
+                    <input v-model="input" placeholder="Search for names..">  </br>  </br>    
+                    <button v-on:click="findRestaurant">Search</button>
+                </div></br></br></br>
+                <div id="td2">
+                        <input type="text" v-model="nameRes"placeholder="name">
+                        <input type="text" v-model="cuisine"placeholder="cuisine"></br></br>
+                        <button v-on:click="addTodo">Ajouter</button>
+                </div></br></br>
+                <div id="td3">
+                        <input type="text" v-model="updatenameRes"placeholder="name">
+                        <input type="text" v-model="updatecuisine"placeholder="cuisine"></br></br>
+                        <button v-on:click="updateTodo">Modifier</button>
+                </div> </br></br>
+         
+        <button v-on:click="pagePrecedente" id="pre">Précedent</button>
+        <button v-on:click="pageSuivante" id="suiv">Suivant</button>
+        <table id="todos" style="width:100%">
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>cuisine</th>
+                <th>delete/update</th>
+            </tr>
+            <tr v-for="(todo, index) in todos"  v-bind:style="{color:getColor(index)}">
+                <td>{{todo._id}}</td>
+                <td>{{todo.name}}</td>
+                <td>{{todo.cuisine}}</td>
+                <td><button v-on:click="removeTodo(todo._id)">delete</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button v-on:click="selectTodo(todo._id,todo.name,todo.cuisine)">select</button></td>
+            </tr>
+        </table> 
+
+        
+
+    </div>
+
+
+
+</body>
+
+</html>
